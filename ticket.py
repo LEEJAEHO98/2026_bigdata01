@@ -16,4 +16,4 @@ def entrance_fee(ages) -> int:
         else:
             total_fee = total_fee + kid
 
-    pass
+    return total_fee
