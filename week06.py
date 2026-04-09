@@ -1,4 +1,6 @@
 import numpy as np
+
+# 기존 HEAD 영역의 코드
 l1 = [1,2,3]
 array01 = np.array(l1)
 print(l1)
@@ -21,3 +23,10 @@ print(array06)
 
 array07 = np.linspace(2,10,3)
 print(array07)
+
+# 병합된 dev04 영역의 코드
+# array01 = np.random.random((3,3))
+array08 = np.random.random((4, 2))
+print(array08)
+print(array08.shape, array08.dtype, array08.ndim, array08.size)
+print(array08.T)
