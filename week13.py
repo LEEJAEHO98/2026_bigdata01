@@ -1,16 +1,8 @@
 import seaborn as sns
-# import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 
 # (데이터 측정)년도, (대상)국가, (1인당 연간 의료비)지출액, (평균)기대수명
 health = sns.load_dataset("healthexp")
-# print(health.head())
-# print(health.tail(7))
-# print(health.info())
-# print(health.describe())
-print(health['Country'].unique())
-print(health['Country'].nunique())
-print(health['Country'].value_counts())
 
 # 가장 최근 연도인 2020년 데이터를 필터링 후 추출
 health_2020 = health[health['Year']==2020]
@@ -50,3 +42,17 @@ sns.relplot(data=health,
             palette='Set1'
             )
 plt.show()
+# sns.relplot(data=health,
+#             x='Spending_USD',
+#             y='Life_Expectancy',
+#             col='Country',
+#             col_wrap=3,
+#             kind='scatter',
+#             hue='Year',
+#             palette='Set1'
+#             )
+# plt.show()
+
+# print(health.sort_values('Year', ascending=False))
+# 2가지 기준으로 정렬 (년도별 순, 그다음 기대수명 높은 순)후 상위 10개 데이터 출력
+# print(health.sort_values(['Year','Life_Expectancy'], ascending=[False, False]).head(10))
