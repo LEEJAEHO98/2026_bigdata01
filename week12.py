@@ -1,12 +1,7 @@
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 titanic = sns.load_dataset('titanic')
-#print(titanic.head())
-#print(titanic.describe())
-print(titanic.info())
-# print(titanic['who'])
-# print(titanic['who'].value_counts())
-# print(titanic[['embarked', 'embark_town']])
 # print(titanic[['alive', 'survived', 'pclass', 'class', 'embarked', 'embark_town']])
 titanic01 = titanic.drop(columns=['embarked', 'alive', 'class', 'deck'])
 # print(titanic01.info())
@@ -18,3 +13,14 @@ survival_rate_pclass = titanic01.groupby('pclass')['survived'].mean()
 # print(survival_rate_pclass)
 survival_rate_sex = titanic01.groupby('sex')['survived'].mean()
 print(survival_rate_sex)
+# print(titanic01.isnull().sum())
+titanic01 = titanic01.dropna(subset=['embark_town'])
+print(titanic01.info())
+# print(titanic01['age'].mean())
+# print(titanic01['age'].median())
+# print(titanic01['age'].mode())
+titanic01['age'] = titanic01['age'].fillna(titanic01['age'].median())
+print(titanic01.info())
+
+sns.barplot(data=titanic01, x='pclass', y='survived')
+plt.show()
